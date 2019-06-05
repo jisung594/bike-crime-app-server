@@ -1,16 +1,18 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# users will create an Incident instance
 
 require 'rest-client'
 require 'json'
 
 User.destroy_all
 Incident.destroy_all
+
+# default user
+jonathan = User.create(
+  full_name: "Jonathan Choi",
+  email: "jisung594@gmail.com",
+  password_digest: "korea123",
+  location: "Astoria, Queens"
+)
 
 
 # THEFTS
@@ -24,7 +26,8 @@ parsed_data1["incidents"].each do |theftObj|
     address: theftObj["address"],
     occurred_at: theftObj["occurred_at"],
     type_of: theftObj["type"],
-    image: theftObj["media"]["image_url"]
+    image: theftObj["media"]["image_url"],
+    user_id: jonathan.id
   )
 end
 
@@ -40,7 +43,8 @@ parsed_data2["incidents"].each do |crashObj|
     address: crashObj["address"],
     occurred_at: crashObj["occurred_at"],
     type_of: crashObj["type"],
-    image: crashObj["media"]["image_url"]
+    image: crashObj["media"]["image_url"],
+    user_id: jonathan.id
   )
 end
 
@@ -56,7 +60,8 @@ parsed_data3["incidents"].each do |hazardObj|
     address: hazardObj["address"],
     occurred_at: hazardObj["occurred_at"],
     type_of: hazardObj["type"],
-    image: hazardObj["media"]["image_url"]
+    image: hazardObj["media"]["image_url"],
+    user_id: jonathan.id
   )
 end
 
@@ -72,6 +77,7 @@ parsed_data4["incidents"].each do |unconfirmedObj|
     address: unconfirmedObj["address"],
     occurred_at: unconfirmedObj["occurred_at"],
     type_of: unconfirmedObj["type"],
-    image: unconfirmedObj["media"]["image_url"]
+    image: unconfirmedObj["media"]["image_url"],
+    user_id: jonathan.id
   )
 end

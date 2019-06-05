@@ -7,6 +7,7 @@ class CreateIncidents < ActiveRecord::Migration[5.2]
       t.integer :occurred_at
       t.string :type_of
       t.string :image
+      t.integer :user_id
       t.timestamps
     end
   end

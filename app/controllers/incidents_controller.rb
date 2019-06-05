@@ -19,7 +19,8 @@ class IncidentsController < ApplicationController
       :address,
       :occurred_at,
       :type_of,
-      :image
+      :image,
+      :user_id
     )
   end
 
